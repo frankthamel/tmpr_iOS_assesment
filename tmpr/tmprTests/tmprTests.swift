@@ -19,10 +19,25 @@ class tmprTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCardListModelView_cardAt() {
+        
+        // initial data
+        let card0 = Card(id: "AA0", imageUrl: "Test", job: "Job", jobDescription: "jobDescription", price: 10.0, timeDuration: "10am - 2pm")
+        let card1 = Card(id: "AA1", imageUrl: "Test", job: "Job", jobDescription: "jobDescription", price: 10.0, timeDuration: "10am - 2pm")
+        let cards : [Card] = [card0,card1]
+        let cardListViewModel = CardListViewModel(cards)
+        XCTAssertEqual(cardListViewModel.cardAt(0).id, "AA0")
     }
+    
+    func testCardModelView_jobPrice() {
+        
+           let price : Float = 10.0
+           // initial data
+           let card0 = Card(id: "AA0", imageUrl: "Test", job: "Job", jobDescription: "jobDescription", price: price, timeDuration: "10am - 2pm")
+           let cards : [Card] = [card0]
+           let cardListViewModel = CardListViewModel(cards)
+        XCTAssertEqual(cardListViewModel.cardAt(0).price, "$\(price)")
+       }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

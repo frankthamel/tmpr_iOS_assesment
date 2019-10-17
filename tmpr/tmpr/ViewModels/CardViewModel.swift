@@ -21,10 +21,12 @@ struct CardViewModel {
         return card.id
     }
     
-    var image : UIImage {
+    var image : UIImage? {
         print(card.imageUrl)
         //fetch image using image url
-        return UIImage()
+        // sample image for testing
+        let image : UIImage = UIImage(named: "sampleImage")!
+        return image
     }
     
     var job : String {
@@ -35,8 +37,8 @@ struct CardViewModel {
         return card.jobDescription
     }
     
-    var price : Float {
-        return card.price
+    var price : String {
+        return "$\(card.price)"
     }
     
     var timeDuration : String {
@@ -47,6 +49,11 @@ struct CardViewModel {
 // configure View
 extension CardViewModel {
     func configure(homeTableViewCell view : HomeTableViewCell ) {
-        
+       // view.imageView?.image = image
+        view.jobLabel.text = job
+        view.jobDescriptionLabel.text = jobDescription
+        view.jobTimePeriod.text = timeDuration
+        view.priceLabel.text = price
+        view.layoutSubviews()
     }
 }

@@ -11,13 +11,13 @@ import UIKit
 class HomeUITableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    let dataSet : [String]? = ["One", "Two", "Three", "Four" , "Five"]
+    var cardListViewModel : CardListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
         registerPullToRefreshControl()
+        cardListViewModel = CardListViewModel(DataFetchService.fetchData())
     }
     
     func prepareView() {
@@ -52,13 +52,12 @@ extension HomeUITableViewController : UITableViewDataSource {
 
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            // #warning Incomplete implementation, return the number of rows
-           return dataSet == nil ? 0 : dataSet!.count
+            return cardListViewModel.cardsViewModel.count
        }
 
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath)
-
-       
-           return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+            cardListViewModel.cardAt(indexPath.row).configure(homeTableViewCell: cell)
+            return cell
        }
 }
