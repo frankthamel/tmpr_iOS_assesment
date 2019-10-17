@@ -22,11 +22,15 @@ struct CardViewModel {
     }
     
     var image : UIImage? {
-        print(card.imageUrl)
         //fetch image using image url
         // sample image for testing
-        let image : UIImage = UIImage(named: "sampleImage")!
-        return image
+        let image : UIImage? = UIImage(named: "sampleImage")
+        
+        if let image = image {
+            return image
+        } else {
+            return nil
+        }
     }
     
     var job : String {
@@ -49,7 +53,7 @@ struct CardViewModel {
 // configure View
 extension CardViewModel {
     func configure(homeTableViewCell view : HomeTableViewCell ) {
-       // view.imageView?.image = image
+        //view.imageView!.image = image
         view.jobLabel.text = job
         view.jobDescriptionLabel.text = jobDescription
         view.jobTimePeriod.text = timeDuration

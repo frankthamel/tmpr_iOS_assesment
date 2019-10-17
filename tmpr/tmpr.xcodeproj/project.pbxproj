@@ -119,6 +119,7 @@
 		4616511F2357DB7F006F95EB /* tmpr */ = {
 			isa = PBXGroup;
 			children = (
+				46E41DD623586368007F5524 /* Resources */,
 				461651442357F2B9006F95EB /* Controllers */,
 				461651422357F29E006F95EB /* Models */,
 				461651452357F2C3006F95EB /* ViewModels */,
@@ -203,6 +204,13 @@
 				461651542357FF71006F95EB /* AppConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		46E41DD623586368007F5524 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B1A6844797405369D11FB328 /* Pods */ = {
