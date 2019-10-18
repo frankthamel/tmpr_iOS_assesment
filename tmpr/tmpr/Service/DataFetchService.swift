@@ -14,7 +14,9 @@ class DataFetchService {
 
         var cards : [Card] = []
 
-        let connectionApi = ConnectionApi(url: "https://temper.works/api/v1/contractor/shifts", httpMethod: .get)
+        let connectionApi = ConnectionApi(url: "\(BASE_URL)\(API_VERSION)\(SAMPLE_ENPOINT)", httpMethod: .get)
+        
+        //TODO: should pass from Filters
         connectionApi.addParameter(value: "2019-10-19", forKey: "dates" )
 
         connectionApi.performRequest { response in

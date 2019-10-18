@@ -37,7 +37,10 @@ class HomeUITableViewController: UIViewController {
         tableView.dataSource = self
         
         // add spinner
+        activityIndicator.center = self.view.center
+        self.view.bringSubviewToFront(activityIndicator)
         activityIndicator.startAnimating()
+        
     }
     
     func registerPullToRefreshControl() {
