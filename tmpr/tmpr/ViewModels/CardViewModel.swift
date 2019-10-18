@@ -12,9 +12,11 @@ import UIKit
 struct CardViewModel {
     
     let card : Card!
+    let connectionApi: ConnectionApi
     
     init(card : Card) {
         self.card = card
+        connectionApi = ConnectionApi()
     }
     
     var id : String {
@@ -22,8 +24,7 @@ struct CardViewModel {
     }
     
     var image : UIImage? {
-        //fetch image using image url
-        // sample image for testing
+
         let image : UIImage? = UIImage(named: "sampleImage")
         
         if let image = image {
@@ -53,12 +54,21 @@ struct CardViewModel {
 // configure View
 extension CardViewModel {
     func configure(homeTableViewCell view : HomeTableViewCell ) {
-        
+    
         //view.imageView!.image = image
         view.jobLabel.text = job
         view.jobDescriptionLabel.text = jobDescription
         view.jobTimePeriod.text = timeDuration
         view.priceLabel.text = price
         view.layoutSubviews()
+    }
+    
+    func fetchImages(homeTableViewCell view : HomeTableViewCell , withCompletion completion : @escaping (Bool) -> ()) {
+        //fetch image using image url
+        // sample image for testing
+        connectionApi.downloadImage(atUrl: card.photo) { (image) in
+            view.imageView?.image = image
+            completion(true)
+        }
     }
 }

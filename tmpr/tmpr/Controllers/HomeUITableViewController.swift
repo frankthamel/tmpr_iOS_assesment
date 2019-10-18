@@ -82,6 +82,7 @@ extension HomeUITableViewController : UITableViewDataSource {
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
             cardListViewModel.cardAt(indexPath.row).configure(homeTableViewCell: cell)
+        
             return cell
        }
 }

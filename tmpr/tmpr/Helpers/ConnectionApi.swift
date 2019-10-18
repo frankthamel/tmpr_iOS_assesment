@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 class ConnectionApi {
     
@@ -16,12 +17,12 @@ class ConnectionApi {
     }
     
     // request url
-    let url : String
-    let httpMethod : HTTPMethod
+    let url : String?
+    let httpMethod : HTTPMethod?
     var headers : [String : String]
     var body : [String : String]
     var parameters : [String:String]
-
+    
     init(url : String , httpMethod : HTTPMethod) {
         self.url = url
         self.httpMethod = httpMethod
@@ -30,6 +31,14 @@ class ConnectionApi {
         parameters = [String : String]()
     }
     
+    init() {
+        self.url = nil
+        self.httpMethod = nil
+        headers = [String:String]()
+        body = [String:String]()
+        parameters = [String : String]()
+    }
+   
     func addHeader(value : String, forKey key : String)
     {
         headers[key] = value
@@ -47,6 +56,10 @@ class ConnectionApi {
 
     
     func performRequest(withCompletion completion: @escaping (Data?) -> Void) {
+        
+        guard let url = url, let httpMethod = httpMethod else {
+            return
+        }
         
         if headers.count > 0 {
              Alamofire.request(url, method: httpMethod, parameters: parameters, encoding:URLEncoding.default , headers: headers)
@@ -69,6 +82,18 @@ class ConnectionApi {
                 return
               }
                 completion(response.data)
+            }
+        }
+    }
+    
+    func downloadImage(atUrl url: String, withCompletion completion: @escaping (UIImage?) -> Void) {
+        // Download image
+        // pass image path in completion
+        
+        Alamofire.request(url).responseImage { response in
+            if let image = response.result.value {
+                print("image downloaded: \(image)")
+                completion(image)
             }
         }
     }
