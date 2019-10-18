@@ -17,7 +17,14 @@ class HomeUITableViewController: UIViewController {
         super.viewDidLoad()
         prepareView()
         registerPullToRefreshControl()
-        cardListViewModel = CardListViewModel(DataFetchService.fetchData())
+        DataFetchService.fetchCards { (cards) in
+            self.cardListViewModel = CardListViewModel(cards)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
     
     func prepareView() {
@@ -35,10 +42,16 @@ class HomeUITableViewController: UIViewController {
     
     @objc private func refresh() {
         // Fetch Weather Data
-        tableView.reloadData()
+        DataFetchService.fetchCards { (cards) in
+            self.cardListViewModel = CardListViewModel(cards)
+        }
+    
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
+        }
         
-        // in the end call
-        tableView.refreshControl?.endRefreshing()
+        
     }
 }
 
@@ -52,7 +65,7 @@ extension HomeUITableViewController : UITableViewDataSource {
 
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            // #warning Incomplete implementation, return the number of rows
-            return cardListViewModel.cardsViewModel.count
+        return  cardListViewModel == nil ? 0 : cardListViewModel.cardsViewModel.count
        }
 
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

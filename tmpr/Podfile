@@ -6,14 +6,16 @@ target 'tmpr' do
   use_frameworks!
 
   # Pods for tmpr
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
+  pod 'RxSwift', '5.0.0'
+  pod 'RxCocoa', '5.0.0'
+  pod 'Alamofire','4.8.2'
+  pod 'SwiftyJSON','5.0.0'
 
   target 'tmprTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RxBlocking', '~> 5'
-    pod 'RxTest', '~> 5'
+    pod 'RxBlocking', '5.0.0'
+    pod 'RxTest', '5.0.0'
   end
 
 end

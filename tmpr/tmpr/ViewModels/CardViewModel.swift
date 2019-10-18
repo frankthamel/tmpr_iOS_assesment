@@ -18,7 +18,7 @@ struct CardViewModel {
     }
     
     var id : String {
-        return card.id
+        return "\(card.id)"
     }
     
     var image : UIImage? {
@@ -34,25 +34,26 @@ struct CardViewModel {
     }
     
     var job : String {
-        return card.job
+        return card.title
     }
     
     var jobDescription : String {
-        return card.jobDescription
+        return card.description
     }
     
     var price : String {
-        return "$\(card.price)"
+        return "$\(card.max_possible_earnings_hour)"
     }
     
     var timeDuration : String {
-        return card.timeDuration
+        return "\(card.start_time) - \(card.end_time)"
     }
 }
 
 // configure View
 extension CardViewModel {
     func configure(homeTableViewCell view : HomeTableViewCell ) {
+        
         //view.imageView!.image = image
         view.jobLabel.text = job
         view.jobDescriptionLabel.text = jobDescription

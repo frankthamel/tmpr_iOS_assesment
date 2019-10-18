@@ -87,7 +87,7 @@
                                                 <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoS-rh-Q2J" customClass="CustomUIView" customModule="tmpr" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="23" width="374" height="227"/>
                                                     <subviews>
-                                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImage" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-9s-ble">
+                                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImage" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-9s-ble">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="227"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="227" id="ddD-Ih-sUo"/>
@@ -114,6 +114,9 @@
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -216,13 +219,25 @@
                     <view key="view" contentMode="scaleToFill" id="QTt-im-8Wr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2R-nh-8mD">
+                                <rect key="frame" x="161" y="40" width="92" height="36"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="q2R-nh-8mD" firstAttribute="top" secondItem="LgN-pH-QX9" secondAttribute="top" constant="40" id="7Uz-nW-duf"/>
+                            <constraint firstItem="q2R-nh-8mD" firstAttribute="centerX" secondItem="QTt-im-8Wr" secondAttribute="centerX" id="OGd-Oa-esZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LgN-pH-QX9"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1N-ra-GbY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4217" y="462"/>
+            <point key="canvasLocation" x="4215.9420289855079" y="461.38392857142856"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="8Hf-9A-6GI">
@@ -231,13 +246,25 @@
                     <view key="view" contentMode="scaleToFill" id="sKv-Ha-0cc" customClass="Sign">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khB-ee-ny3">
+                                <rect key="frame" x="150" y="40" width="114" height="36"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="khB-ee-ny3" firstAttribute="centerX" secondItem="sKv-Ha-0cc" secondAttribute="centerX" id="2H6-m3-6ZD"/>
+                            <constraint firstItem="khB-ee-ny3" firstAttribute="top" secondItem="mia-iE-rAw" secondAttribute="top" constant="40" id="F9R-da-8AL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mia-iE-rAw"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgB-8h-gdT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4155" y="-211"/>
+            <point key="canvasLocation" x="4199" y="-207"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u5r-Mk-LQy">
@@ -259,6 +286,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sampleImage" width="400" height="295.5"/>
+        <image name="sampleImage" width="354" height="224"/>
     </resources>
 </document>

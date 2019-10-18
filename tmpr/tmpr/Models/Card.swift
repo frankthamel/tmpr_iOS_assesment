@@ -8,12 +8,14 @@
 
 import Foundation
 
-
-struct Card : Decodable {
-    let id : String
-    let imageUrl : String
-    let job : String
-    let jobDescription : String
-    let price : Float
-    let timeDuration : String
+struct Card : Codable {
+    let id : Int
+    let title : String
+    let max_possible_earnings_hour : Float
+    let description  : String
+    let photo : String
+    let currency : String
+    let start_time : String
+    let end_time : String
 }
+
