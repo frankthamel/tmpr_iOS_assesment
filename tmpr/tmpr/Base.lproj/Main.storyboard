@@ -205,10 +205,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="IJ1-wf-yaG"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Nba-ud-xRg" id="gLc-ku-Yzd"/>
                         <outlet property="tableView" destination="ulC-LO-PXe" id="YFG-9K-Cze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjx-pX-D8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="Nba-ud-xRg">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="3447.826086956522" y="135.9375"/>
         </scene>

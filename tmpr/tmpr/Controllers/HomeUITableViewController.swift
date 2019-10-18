@@ -11,6 +11,8 @@ import UIKit
 class HomeUITableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     var cardListViewModel : CardListViewModel!
     
     override func viewDidLoad() {
@@ -22,6 +24,8 @@ class HomeUITableViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                // add spinner
+                self.activityIndicator.stopAnimating()
             }
         }
         
@@ -31,6 +35,9 @@ class HomeUITableViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.separatorColor = UIColor.clear
         tableView.dataSource = self
+        
+        // add spinner
+        activityIndicator.startAnimating()
     }
     
     func registerPullToRefreshControl() {
@@ -42,16 +49,17 @@ class HomeUITableViewController: UIViewController {
     
     @objc private func refresh() {
         // Fetch Weather Data
+        // add spinner
+        activityIndicator.startAnimating()
         DataFetchService.fetchCards { (cards) in
             self.cardListViewModel = CardListViewModel(cards)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+                // add spinner
+                self.activityIndicator.stopAnimating()
+            }
         }
-    
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
-        }
-        
-        
     }
 }
 
